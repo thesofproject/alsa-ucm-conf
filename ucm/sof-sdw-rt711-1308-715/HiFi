@@ -1,0 +1,142 @@
+# Use case Configuration for skl-hda-card
+
+SectionVerb {
+
+	EnableSequence [
+		cdev "hw:sofsdwrt7111308"
+		cset "name='PGA1.0 1 Master Playback Volume' 80"
+	]
+
+}
+
+SectionDevice."Speaker" {
+	Comment "Speaker"
+
+	EnableSequence [
+		cdev "hw:sofsdwrt7111308"
+		cset "name='rt1308-1 DAC L Switch' 1"
+		cset "name='rt1308-1 DAC R Switch' 1"
+	]
+
+	Value {
+		PlaybackPCM "hw:sofsdwrt7111308,2"
+		PlaybackChannels "2"
+	}
+}
+
+
+SectionDevice."Headphone" {
+	Comment "Headphone"
+
+	EnableSequence [
+		cdev "hw:sofsdwrt7111308"
+		cset "name='rt711 DAC Surr Playback Volume' 87"
+	]
+	Value {
+		PlaybackPCM "hw:sofsdwrt7111308,0"
+		PlaybackChannels "2"
+		JackControl "Headphone Jack"
+	}
+}
+
+SectionDevice."Microphone" {
+	Comment "Headset Mic"
+
+	EnableSequence [
+		cdev "hw:sofsdwrt7111308"
+		cset "name='rt711 ADC 23 Mux' 'MIC2'"
+		cset "name='rt711 ADC 08 Capture Volume' 63"
+		cset "name='rt711 ADC 08 Capture Switch' 1"
+		cset "name='rt711 AMIC Volume' 1"
+	]
+	Value {
+		CapturePCM "hw:sofsdwrt7111308,1"
+		CaptureChannels "2"
+		JackControl "Headset Mic Jack"
+	}
+}
+
+SectionDevice."Dmic" {
+	Comment "Digital Microphone"
+
+	EnableSequence [
+		cdev "hw:sofsdwrt7111308"
+		cset "name='rt715 DMIC3 Boost' 2"
+		cset "name='rt715 DMIC4 Boost' 2"
+		cset "name='rt715 ADC 24 Mux' 3"
+		cset "name='rt715 ADC 25 Mux' 4"
+		cset "name='rt715 ADC 27 Capture Switch' 1"
+		cset "name='rt715 ADC 07 Capture Switch' 1"
+	]
+
+	Value {
+		CapturePCM "hw:sofsdwrt7111308,4"
+		CaptureChannels "2"
+	}
+}
+
+SectionDevice."HDMI1" {
+	Comment "HDMI1/DP1 Output"
+
+	EnableSequence [
+		cdev "hw:sofsdwrt7111308"
+		cset "name='hif5-0 Jack Switch' on"
+		cset "name='Pin5-Port0 Mux' 1"
+	]
+
+	DisableSequence [
+		cdev "hw:sofsdwrt7111308"
+		cset "name='Pin5-Port0 Mux' 0"
+		cset "name='hif5-0 Jack Switch' off"
+	]
+
+	Value {
+		PlaybackPCM "hw:sofsdwrt7111308,5"
+		PlaybackChannels "2"
+		JackControl "HDMI/DP, pcm=5 Jack"
+	}
+}
+
+SectionDevice."HDMI2" {
+	Comment "HDMI2/DP2 Output"
+
+	EnableSequence [
+		cdev "hw:sofsdwrt7111308"
+		cset "name='hif6-0 Jack Switch' on"
+		cset "name='Pin6-Port0 Mux' 2"
+	]
+
+	DisableSequence [
+		cdev "hw:sofsdwrt7111308"
+		cset "name='Pin6-Port0 Mux' 0"
+		cset "name='hif6-0 Jack Switch' off"
+	]
+
+	Value {
+		PlaybackPCM "hw:sofsdwrt7111308,6"
+		PlaybackChannels "2"
+		JackControl "HDMI/DP, pcm=6 Jack"
+	}
+}
+
+SectionDevice."HDMI3" {
+	Comment "HDMI3/DP3 Output"
+
+	EnableSequence [
+		cdev "hw:sofsdwrt7111308"
+		cset "name='hif7-0 Jack Switch' on"
+		cset "name='Pin7-Port0 Mux' 3"
+	]
+
+	DisableSequence [
+		cdev "hw:sofsdwrt7111308"
+		cset "name='Pin7-Port0 Mux' 0"
+		cset "name='hif7-0 Jack Switch' off"
+	]
+
+	Value {
+		PlaybackPCM "hw:sofsdwrt7111308,7"
+		PlaybackChannels "2"
+		JackControl "HDMI/DP, pcm=7 Jack"
+	}
+}
