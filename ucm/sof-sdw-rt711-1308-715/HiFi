@@ -1,0 +1,134 @@
+SectionVerb {
+
+	EnableSequence [
+		cdev "hw:sofsdwrt7111308"
+		cset "name='PGA1.0 1 Master Playback Volume' 80"
+		cset "name='rt1308-1 DAC L Switch' on"
+		cset "name='rt1308-1 DAC R Switch' on"
+		cset "name='rt711 ADC 23 Mux' 'MIC2'"
+		cset "name='rt711 ADC 08 Capture Volume' 63"
+		cset "name='rt711 ADC 08 Capture Switch' 1"
+		cset "name='rt711 ADC 09 Capture Volume' 63"
+		cset "name='rt711 ADC 09 Capture Switch' 1"
+		cset "name='rt711 AMIC Volume' 1"
+		cset "name='Speaker Switch' on"
+		cset "name='Headphone Switch' on"
+	]
+
+	DisableSequence [
+		cdev "hw:sofsdwrt7111308"
+	]
+}
+
+SectionDevice."Speaker" {
+        Comment "Speaker"
+
+        Value {
+		PlaybackPCM "hw:sofsdwrt7111308,2"
+		PlaybackChannels "2"
+        }
+}
+
+
+SectionDevice."Headphone" {
+	Comment "Headphone"
+
+	Value {
+		PlaybackPCM "hw:sofsdwrt7111308,0"
+		PlaybackChannels "2"
+		JackDev "sof-sdw-rt711-1308 Headset Jack"
+		JackControl "Headphone Jack"
+	}
+}
+
+SectionDevice."Microphone" {
+	Comment "Headset Mic"
+
+	Value {
+		CapturePCM "hw:sofsdwrt7111308,1"
+		CaptureChannels "2"
+		JackControl "Headset Mic Jack"
+	}
+}
+
+SectionDevice."Dmic" {
+	Comment "Digital Micrphone"
+
+	Value {
+		CapturePCM "hw:sofsdwrt7111308,3"
+		CaptureChannels "4"
+	}
+}
+
+SectionDevice."HDMI1" {
+        Comment "HDMI1/DP1 Output"
+
+        EnableSequence [
+                cdev "hw:sofsdwrt7111308"
+        ]
+
+        DisableSequence [
+                cdev "hw:sofsdwrt7111308"
+        ]
+
+        Value {
+                PlaybackPCM "hw:sofsdwrt7111308,5"
+                PlaybackChannels "2"
+                JackControl "HDMI/DP,pcm=5 Jack"
+        }
+}
+
+SectionDevice."HDMI2" {
+        Comment "HDMI2/DP2 Output"
+
+        EnableSequence [
+                cdev "hw:sofsdwrt7111308"
+        ]
+
+        DisableSequence [
+                cdev "hw:sofsdwrt7111308"
+        ]
+
+        Value {
+                PlaybackPCM "hw:sofsdwrt7111308,6"
+                PlaybackChannels "2"
+                JackControl "HDMI/DP,pcm=6 Jack"
+        }
+}
+
+SectionDevice."HDMI3" {
+        Comment "HDMI3/DP3 Output"
+
+        EnableSequence [
+                cdev "hw:sofsdwrt7111308"
+        ]
+
+        DisableSequence [
+                cdev "hw:sofsdwrt7111308"
+        ]
+
+        Value {
+                PlaybackPCM "hw:sofsdwrt7111308,7"
+                PlaybackChannels "2"
+                JackControl "HDMI/DP,pcm=7 Jack"
+        }
+}
+
+SectionDevice."HDMI4" {
+        Comment "HDMI4/DP4 Output"
+
+        EnableSequence [
+                cdev "hw:sofsdwrt7111308"
+        ]
+
+        DisableSequence [
+                cdev "hw:sofsdwrt7111308"
+        ]
+
+        Value {
+                PlaybackPCM "hw:sofsdwrt7111308,8"
+                PlaybackChannels "2"
+                JackControl "HDMI/DP,pcm=8 Jack"
+        }
+}
+
